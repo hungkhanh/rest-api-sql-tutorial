@@ -7,7 +7,6 @@ module.exports = {
       {
         id: {
           type: Sequelize.UUID,
-          defaultValue: Sequelize.UUIDV4,
           primaryKey: true,
         },
         city: {
@@ -34,13 +33,21 @@ module.exports = {
         territory: {
           type: Sequelize.STRING,
         },
-        createBy: {
+        createdBy: {
           type: Sequelize.UUID,
         },
-        updateBy: {
+        updatedBy: {
           type: Sequelize.UUID,
         },
-      }
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+      },
     )
 
     // Employee
@@ -48,7 +55,6 @@ module.exports = {
       {
         id: {
           type: Sequelize.UUID,
-          defaultValue: Sequelize.UUIDV4,
           primaryKey: true,
         },
         lastName: {
@@ -72,11 +78,19 @@ module.exports = {
         jobTitle: {
           type: Sequelize.STRING,
         },
-        createBy: {
+        createdBy: {
           type: Sequelize.UUID,
         },
-        updateBy: {
+        updatedBy: {
           type: Sequelize.UUID,
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
         },
       }
     )
@@ -97,7 +111,8 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('office');
     await queryInterface.dropTable('employee');
+    await queryInterface.dropTable('office');
+    
   }
 };

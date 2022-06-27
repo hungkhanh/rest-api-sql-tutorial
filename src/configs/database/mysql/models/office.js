@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
         type: DataTypes.UUID,
       },
       city: DataTypes.STRING,
@@ -24,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Office',
       timestamps: true,
+      createdAt: true,
+      updatedAt: true,
     }
   );
 

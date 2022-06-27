@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Employee',
       timestamps: true,
+      createdAt: true,
+      updatedAt: true,
     }
   );
 
