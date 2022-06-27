@@ -1,0 +1,10 @@
+const path = require('path');
+
+const MYSQL_CONFIG_PATH = 'src/configs/database/mysql';
+
+module.exports = {
+	config: path.resolve(MYSQL_CONFIG_PATH + '/config', 'config.js'),
+	'models-path': path.resolve(MYSQL_CONFIG_PATH, 'models'),
+	'seeders-path': path.resolve(MYSQL_CONFIG_PATH, 'seeders'),
+	'migrations-path': path.resolve(MYSQL_CONFIG_PATH, 'migrations'),
+};
