@@ -40,11 +40,6 @@ module.exports = {
         updateBy: {
           type: Sequelize.UUID,
         },
-      },
-      {
-        timestamps: true,
-        createAt: true,
-        updateAt: true,
       }
     )
 
@@ -83,11 +78,6 @@ module.exports = {
         updateBy: {
           type: Sequelize.UUID,
         },
-      },
-      {
-        timestamps: true,
-        createAt: true,
-        updateAt: true,
       }
     )
 
