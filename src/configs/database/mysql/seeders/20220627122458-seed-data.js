@@ -34,21 +34,6 @@ module.exports = {
         updatedBy: null,
         createdAt: new Date(),
         updatedAt: new Date()
-      },
-      {
-        id: uuidv4(),
-        city: 'city3',
-        phone: '0123456789',
-        addressLine1: 'address1',
-        addressLine2: 'address2',
-        state: 'state',
-        country: 'country',
-        postalCode: 'postalCode',
-        territory: 'territory',
-        createdBy: null,
-        updatedBy: null,
-        createdAt: new Date(),
-        updatedAt: new Date()
       }
   ]);
 
@@ -57,6 +42,39 @@ module.exports = {
     );
     // luôn có 2 ???
     console.log(officeRes[0]);
+
+    await queryInterface.bulkInsert('employee',
+      [
+        {
+          id: uuidv4(),
+          lastName: 'last1',
+          firstName: 'first',
+          extension: 'extension',
+          email: 'mail@gmail.com',
+          officeId: officeRes[0][0].id,
+          reportsTo: null,
+          jobTitle: 'president',
+          createdBy: null,
+          updatedBy: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          id: uuidv4(),
+          lastName: 'last2',
+          firstName: 'first',
+          extension: 'extension',
+          email: 'mail@gmail.com',
+          officeId: officeRes[0][1].id,
+          reportsTo: null,
+          jobTitle: 'manager',
+          createdBy: null,
+          updatedBy: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+      ]
+    )
   },
 
   async down (queryInterface, Sequelize) {

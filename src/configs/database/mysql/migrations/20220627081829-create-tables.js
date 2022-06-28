@@ -95,6 +95,7 @@ module.exports = {
       }
     )
 
+    // FK_employee_office
     await queryInterface.addConstraint('employee',
       {
         name: 'FK_employee_office',
@@ -102,6 +103,21 @@ module.exports = {
         type: 'foreign key',
         references: {
           table: 'office',
+          field: 'id',
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }
+    )
+
+    // FK_employee_employee
+    await queryInterface.addConstraint('employee',
+      {
+        name: 'FK_employee_employee',
+        fields: ['reportsTo'],
+        type: 'foreign key',
+        references: {
+          table: 'employee',
           field: 'id',
         },
         onDelete: 'cascade',
