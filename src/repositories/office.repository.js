@@ -2,7 +2,12 @@ const db = require('../configs/database/mysql/models/index');
 
 const Office = db.Office;
 
-const findAll = async (page, size) => {
+/**
+ * 
+ * @returns {Office[]}
+ * @description query all office in database
+ */
+const findAll = async () => {
 	// const offset = (page - 1) * size;
 	// const response = await Office.findAndCountAll({
 	// 	offset: offset,
