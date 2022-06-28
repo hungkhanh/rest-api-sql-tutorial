@@ -1,4 +1,5 @@
 const { Model } = require("sequelize");
+const employee = require("./employee");
 
 module.exports = (sequelize, DataTypes) => {
   class Office extends Model {}
@@ -30,5 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  
   return Office;
 };

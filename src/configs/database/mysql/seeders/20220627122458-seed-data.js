@@ -40,7 +40,7 @@ module.exports = {
     const officeRes = await queryInterface.sequelize.query(
       `SELECT * from office;`
     );
-    // luôn có 2 ???
+
     console.log(officeRes[0]);
 
     await queryInterface.bulkInsert('employee',
@@ -78,6 +78,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('employee', null, {});
     await queryInterface.bulkDelete('office', null, {});
   }
 };
