@@ -2,7 +2,7 @@
   "name": "my-mock",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "db:migrate:run": "npx sequelize db:migrate",
     "db:migrate:undo": "npx sequelize db:migrate:undo",

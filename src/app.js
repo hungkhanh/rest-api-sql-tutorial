@@ -1,1 +1,0 @@
-const db = require('./configs/database/mysql/models/index');

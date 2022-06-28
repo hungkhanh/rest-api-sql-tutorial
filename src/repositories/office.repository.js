@@ -2,19 +2,21 @@ const db = require('../configs/database/mysql/models/index');
 
 const Office = db.Office;
 
-const getAll = async (page, size) => {
-	const offset = (page - 1) * size;
-	const response = await Office.findAndCountAll({
-		offset: offset,
-		limit: size,
-	});
+const findAll = async (page, size) => {
+	// const offset = (page - 1) * size;
+	// const response = await Office.findAndCountAll({
+	// 	offset: offset,
+	// 	limit: size,
+	// });
+	// console.log(response);
+	// return {
+	// 	totalRecords: response[0],
+	// 	totalPages: Math.ceil(response[0] / size),
+	// 	currentPage: page,
+	// 	listOffice: response[1],
+	// };
 
-	return {
-		totalRecords: response[0],
-		totalPages: Math.ceil(response[0] / size),
-		currentPage: page,
-		listOffice: response[1],
-	};
+	return await Office.findAll({});
 };
 
 const create = async (officeData) => {
@@ -23,6 +25,6 @@ const create = async (officeData) => {
 };
 
 module.exports = {
-	getAll,
+	findAll,
 	create,
 };
