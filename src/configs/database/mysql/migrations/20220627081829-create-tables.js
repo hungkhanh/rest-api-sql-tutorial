@@ -47,6 +47,10 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE,
         },
+        deletedAt: {
+          allowNull: true,
+          type: Sequelize.DATE,
+        },
       },
     )
 
@@ -92,6 +96,10 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE,
         },
+        deletedAt: {
+          allowNull: true,
+          type: Sequelize.DATE,
+        },
       }
     )
 
@@ -105,8 +113,8 @@ module.exports = {
           table: 'office',
           field: 'id',
         },
-        onDelete: 'cascade',
-        onUpdate: 'cascade',
+        onDelete: 'no action',
+        onUpdate: 'no action',
       }
     )
 
@@ -120,8 +128,8 @@ module.exports = {
           table: 'employee',
           field: 'id',
         },
-        onDelete: 'cascade',
-        onUpdate: 'cascade',
+        onDelete: 'no action',
+        onUpdate: 'no action',
       }
     )
   },

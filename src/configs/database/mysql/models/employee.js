@@ -21,11 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
+      paranoid: true,
       freezeTableName: true,
       modelName: 'employee',
       timestamps: true,
       createdAt: true,
       updatedAt: true,
+      deletedAt: true,
     }
   );
 

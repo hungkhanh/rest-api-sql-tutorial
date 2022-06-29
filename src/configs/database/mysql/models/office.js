@@ -24,11 +24,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
+      paranoid: true,
       freezeTableName: true,
       modelName: 'office',
       timestamps: true,
       createdAt: true,
       updatedAt: true,
+      deletedAt: true,
     }
   );
 
