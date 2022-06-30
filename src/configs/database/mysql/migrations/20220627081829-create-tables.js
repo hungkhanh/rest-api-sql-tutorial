@@ -20,7 +20,7 @@ module.exports = {
 			},
 			description: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: true,
 			},
 			createdAt: {
 				allowNull: false,
@@ -47,7 +47,7 @@ module.exports = {
 			},
 			description: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: true,
 			},
 			createdAt: {
 				allowNull: false,
@@ -224,9 +224,8 @@ module.exports = {
 			officeId: {
 				type: Sequelize.UUID,
 			},
-      userId: {
+			userId: {
 				type: Sequelize.UUID,
-        allowNull: false,
 			},
 			reportsTo: {
 				type: Sequelize.UUID,
@@ -254,8 +253,8 @@ module.exports = {
 			},
 		});
 
-    // FK_employee_user
-    await queryInterface.addConstraint('employee', {
+		// FK_employee_user
+		await queryInterface.addConstraint('employee', {
 			name: 'FK_employee_user',
 			fields: ['userId'],
 			type: 'foreign key',
@@ -296,11 +295,11 @@ module.exports = {
 
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('role_permission');
-		await queryInterface.dropTable('user');
-    await queryInterface.dropTable('role');
-		await queryInterface.dropTable('permission');
 		await queryInterface.dropTable('employee');
+		await queryInterface.dropTable('user');
+		await queryInterface.dropTable('role');
+		await queryInterface.dropTable('permission');
+		
 		await queryInterface.dropTable('office');
-    
 	},
 };
