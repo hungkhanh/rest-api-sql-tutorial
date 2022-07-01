@@ -1,5 +1,5 @@
 const db = require('../configs/database/mysql/models/index');
-
+const { v4: uuidv4 } = require('uuid');
 const Office = db.Office;
 
 /**
@@ -52,7 +52,13 @@ const findMany = async (condition) => {
  * @description create instance of Office
  */
 const create = async (officeData) => {
-	return await Office.create(officeData);
+	const office = Office.build(officeData);
+	office.id = uuidv4();
+	office.createdBy = null;
+	office.updatedBy = null;
+	office.createdAt = new Date();
+	office.updatedAt = new Date();
+	return await office.save();
 };
 
 /**
@@ -90,12 +96,20 @@ const deleteOne = async (id) => {
 /**
  * 
  * @param {string} id
- * @description restore instance office
+ * @description restore one instance office
  */
-const restore = async (id) => {
+const restoreOne = async (id) => {
 	await Office.restore({
 		where: { id: id },
 	});
+};
+
+/**
+ * 
+ * @description restore all instance office
+ */
+ const restoreAll = async () => {
+	await Office.restore();
 };
 
 module.exports = {
@@ -107,5 +121,6 @@ module.exports = {
 	update,
 	deleteAll,
 	deleteOne,
-	restore,
+	restoreOne,
+	restoreAll,
 };

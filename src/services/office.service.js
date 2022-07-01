@@ -1,5 +1,5 @@
 const officeRepository = require('../repositories/office.repository');
-
+const MESSAGE = require('../common/constants/message.constant');
 /**
  *
  * @return {Office[]}
@@ -54,10 +54,15 @@ const create = async (officeData) => {
  * @param {string} id
  * @param {Object} officeData
  * @returns {Office}
- * @description update instance Office by id
+ * @description update instance Office by id if exists
  */
 const update = async (id, officeData) => {
-	return await officeRepository.update(id, officeData);
+	const result = await officeRepository.findById(id);
+	if (result) {
+		return await officeRepository.update(id, officeData);
+	} else {
+		throw new Error(MESSAGE.NOT_FOUND);
+	}
 };
 
 /**
@@ -68,12 +73,12 @@ const update = async (id, officeData) => {
  * @description update or create one instance Office
  */
 const updateOrCreate = async (id, officeData) => {
-	const result = await officeData.findById(id);
+	const result = await officeRepository.findById(id);
 
 	if (!result) {
-		return await officeData.create(officeData);
+		return await officeRepository.create(officeData);
 	} else {
-		return await officeData.update(id, officeData);
+		return await officeRepository.update(id, officeData);
 	}
 };
 
@@ -96,10 +101,18 @@ const deleteOne = async (id) => {
 /**
  *
  * @param {string} id
- * @description restore instance office
+ * @description restore one instance office
  */
-const restore = async (id) => {
-	await officeRepository.restore(id);
+const restoreOne = async (id) => {
+	await officeRepository.restoreOne(id);
+};
+
+/**
+ *
+ * @description restore one instance office
+ */
+const restoreAll = async () => {
+	await officeRepository.restoreAll();
 };
 
 module.exports = {
@@ -112,5 +125,6 @@ module.exports = {
 	updateOrCreate,
 	deleteAll,
 	deleteOne,
-	restore,
+	restoreOne,
+	restoreAll,
 };

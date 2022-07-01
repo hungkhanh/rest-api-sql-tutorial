@@ -39,8 +39,8 @@ Object.keys(db).forEach(modelName => {
 db.Office.hasMany(db.Employee, {
   foreignKey: 'officeId',
   as: 'employee',
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE'
+  onDelete: 'no action',
+  onUpdate: 'no action'
 });
 db.Employee.belongsTo(db.Office, {
   foreignKey: 'officeId',
@@ -51,8 +51,8 @@ db.Employee.belongsTo(db.Office, {
 db.Employee.hasMany(db.Employee, {
   foreignKey: 'reportsTo',
   as: 'staff',
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE'
+  onDelete: 'no action',
+  onUpdate: 'no action'
 });
 
 
