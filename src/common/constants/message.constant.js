@@ -9,6 +9,7 @@ const MESSAGE = {
 	ROLE_NOT_FOUND: 'Cannot found role',
 	RESOURCE_NOT_FOUND: 'Cannot find resource with corresponding method',
 	NOT_IMPLEMENTED: 'Not implemented',
+	SUCCESS: 'Success',
 };
 
 module.export = MESSAGE;

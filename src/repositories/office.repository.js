@@ -87,6 +87,17 @@ const deleteOne = async (id) => {
 	});
 };
 
+/**
+ * 
+ * @param {string} id
+ * @description restore instance office
+ */
+const restore = async (id) => {
+	await Office.restore({
+		where: { id: id },
+	});
+};
+
 module.exports = {
 	findAll,
 	findById,
@@ -96,4 +107,5 @@ module.exports = {
 	update,
 	deleteAll,
 	deleteOne,
+	restore,
 };

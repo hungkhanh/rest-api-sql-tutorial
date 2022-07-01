@@ -1,8 +1,13 @@
 const router = require('express').Router();
 const officeController = require('../controllers/office.controller');
 
-router.get('/', officeController.getAllOffice);
-router.get('/findOne', officeController.getOneOffice);
-router.get('/findMany', officeController.getManyOffice);
+router.get('/all', officeController.getAllOffice);
+router.get('/one', officeController.getOneOffice);
+router.get('/many', officeController.getManyOffice);
+
+router.delete('/all', officeController.deleteAllOffice);
+router.delete('/one', officeController.deleteOneOffice);
+
+router.put('/one', officeController.restoreOneOffice);
 
 module.exports = router;
